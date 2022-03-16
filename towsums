@@ -1,0 +1,47 @@
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+
+# Attempts
+
+### Naive Brute Force (Version 1)
+
+from timeit import default_timer as timer
+from datetime import timedelta
+
+
+'''
+def twoSum( nums, target):
+    arr_size=len(nums)
+    i=0
+    j=1
+    while i<arr_size:
+        while j<arr_size:
+            if i!=j and nums[i]+nums[j]==target:
+                return [i,j]
+            j+=1
+        i+=1
+        j=1
+'''
+
+
+### Naive Brute Force  (Version 2) 
+-- reuse value/ decrease assignment
+-- decrease condional check
+
+
+'''
+def twoSum( nums, target):
+    arr_size=len(nums)
+    i=0
+    while i<arr_size:
+        j=i+1
+        while j<arr_size:
+            if nums[i]+nums[j]==target:
+                return [i,j]
+            j+=1
+        i+=1
+'''
+
+
+
+
