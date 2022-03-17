@@ -2,13 +2,17 @@ Given an array of integers nums and an integer target, return indices of the two
 
 ### General Optimization Gaol --> Reduce number of comparisons
 nums = [2,7,11,15]
+
 n=len(nums)=4
+
 total pairs = n! / (n-2)! = 16
 
-(2,2), (7,2), (11,2), (15,2)
-(2,7), (7,7), (11,7), (15,7)
-(2,11), (7,11), (11,11), (15,11)
-(2,15), (7,15), (11,15), (15,15)
+
+|--------|--------|---------|---------|---|
+| (2,2)  | (7,2)  | (11,2)  | (15,2)  |   |
+| (2,7)  | (7,7)  | (11,7)  | (15,7)  |   |
+| (2,11) | (7,11) | (11,11) | (15,11) |   |
+| (2,15) | (7,15) | (11,15) | (15,15) |   |
 
 total pairs when skipping equal elements =  n!/2!  =12
 total pairs when skipping swapped elements/foward moving= n!/(2! * (n-2)! =6
