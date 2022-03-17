@@ -1,40 +1,45 @@
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
 ### General Optimization Gaol --> Reduce number of comparisons
+
 nums = [2,7,11,15]
+
+target=9
 
 n=len(nums)=4
 
 total pairs = n! / (n-2)! = 16
 
-
-|--------|--------|---------|---------|---|
-| (2,2)  | (7,2)  | (11,2)  | (15,2)  |   |
-| (2,7)  | (7,7)  | (11,7)  | (15,7)  |   |
-| (2,11) | (7,11) | (11,11) | (15,11) |   |
-| (2,15) | (7,15) | (11,15) | (15,15) |   |
+| (2)  | (7)  | (11)  | (15)  |
+|--------|--------|---------|---------|
+| (2,2)  | (7,2)  | (11,2)  | (15,2)  |
+| (2,7)  | (7,7)  | (11,7)  | (15,7)  |
+| (2,11) | (7,11) | (11,11) | (15,11) |
+| (2,15) | (7,15) | (11,15) | (15,15) |
 
 total pairs when skipping equal elements =  n!/2!  =12
+
 total pairs when skipping swapped elements/foward moving= n!/(2! * (n-2)! =6
 
 
 
-### Case Analysis:
+#### Case Analysis:
+
 Best Case: i,j are first elements
+
 Worst Case:  i,j are last elements
+
 average case:
 
 
 
 # Attempts
 
-### Naive Brute Force (Version 1 -- test each pair with skip)
+### Brute Force (Version 1 )
 
-from timeit import default_timer as timer
-from datetime import timedelta
+test each pair and skip equal elements
 
-
-'''
+```
 def twoSum( nums, target):
     arr_size=len(nums)
     i=0
@@ -46,24 +51,27 @@ def twoSum( nums, target):
             j+=1
         i+=1
         j=1
-'''
-# of assignments= 6
-# of checks= 4
+```
+
+
+##### Step count analysis
+nums of assignments= 6
+
+nums of checks= 4
 
 cost = 6a+4c + c
 
 
 
+### Brute Force  (Version 2)
 
+test each pair without need to skip equal elements
 
+#### approach
+- reuse value/ decrease assignment
+- decrease number of condional checks
 
-
-### Naive Brute Force  (Version 2- test each pair without skip)
--- reuse value/ decrease assignment
--- decrease number of condional checks
-
-
-'''
+```
 def twoSum( nums, target):
     arr_size=len(nums)
     i=0
@@ -74,18 +82,23 @@ def twoSum( nums, target):
                 return [i,j]
             j+=1
         i+=1
-'''
+```
+
+##### Step count analysis
 
 
-# of assignments= 5
-# of checks= 3
+nums of assignments= 5
+nums of checks= 3
 
 cost = 6a+4c + c
 
 
 
-### Naive Brute Force  (Version 3) 
--- caching array access
+### Brute Force  (Version 3) 
+
+#### approach
+- caching array access
+
 
 
 ```
@@ -103,9 +116,14 @@ def twoSum( nums, target):
 ```
 
 
+### Brute Force  (Version 4) 
 
-### Naive Brute Force  (Version 4) 
--- using incremental skip technique
+#### approach
+
+- using incremental step/skip technique
+
+![Screenshot](incremental_step_twosums.png)
+
 
 ```
 def twoSum( nums, target):
@@ -125,7 +143,12 @@ def twoSum( nums, target):
 
 
 ### Recursive  (Version 1) 
-Stack Overflow, depth limit --> 1000
+
+#### approach 
+- tail recursion
+
+### cons
+- Stack Overflow, depth limit --> 1000
 
 
 ```
@@ -145,7 +168,12 @@ def twoSumR( nums, target):
 ```
 
 ### Recursive  (Version 2) 
-mutual recursion  -- stack overflow/segmenation fault
+
+#### approach 
+- mutual recursion  
+ 
+### cons
+- stack overflow/segmenation fault
 
 
 ```
