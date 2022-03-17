@@ -99,7 +99,28 @@ def twoSum( nums, target):
 ```
 
 
-### Naive Recursive  (Version 1) 
+
+### Naive Brute Force  (Version 4) 
+-- using incremental skip technique
+
+```
+def twoSum( nums, target):
+    arr_size=len(nums)
+    step=1
+   
+    while step<arr_size:
+        i=0
+        while i<arr_size-1:
+            j=i+step
+            if j<arr_size and nums[i]+nums[j]==target:
+                return [i,j]
+            i+=1
+        step+=1
+        
+```
+
+
+### Recursive  (Version 1) 
 Stack Overflow, depth limit --> 1000
 
 
@@ -119,13 +140,29 @@ def twoSumR( nums, target):
     return _twoSumInner(nums,target,0)
 ```
 
-### Naive Recursive  (Version 2) 
-tail recursion  -- not supported in python
-increase stack depth
+### Recursive  (Version 2) 
+mutual recursion  -- stack overflow/segmenation fault
+
 
 ```
-import sys
-sys.setrecursionlimit(5500000)
+def twoSumR( nums, target):
+    arr_size=len(nums)
+    
+    def _outerR(nums,target,i):
+        if i<arr_size-1:
+            return _innerR(nums,target,i,i+1)
+            
+    def _innerR(nums,target,i,j):
+        if nums[i]+nums[j]==target:
+            return [i,j]
+            
+        if j<arr_size-1:
+            return _innerR(nums,target,i,j+1)
+            
+        return _outerR(nums,target,i+1)
+        
+        
+    return _outerR(nums,target,0)
 ```
 
 
