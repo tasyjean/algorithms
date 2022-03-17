@@ -62,7 +62,8 @@ nums of checks= 4
 cost = 6a+4c + c
 
 
-
+  <hr>
+  
 ### Brute Force  (Version 2)
 
 test each pair without need to skip equal elements
@@ -93,6 +94,8 @@ nums of checks= 3
 cost = 6a+4c + c
 
 
+  
+<hr>
 
 ### Brute Force  (Version 3) 
 
@@ -115,6 +118,7 @@ def twoSum( nums, target):
         i+=1
 ```
 
+<hr>
 
 ### Brute Force  (Version 4) 
 
@@ -141,6 +145,8 @@ def twoSum( nums, target):
         
 ```
 
+  
+<hr>
 
 ### Recursive  (Version 1) 
 
@@ -166,6 +172,8 @@ def twoSumR( nums, target):
         
     return _twoSumInner(nums,target,0)
 ```
+  
+<hr>  
 
 ### Recursive  (Version 2) 
 
